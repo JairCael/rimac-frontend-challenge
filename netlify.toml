@@ -9,3 +9,6 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  VITE_API_BASE_URL = "https://rimac-front-end-challenge.netlify.app/api/"
+  VITE_TEST_DNI = "44488888"
+  VITE_TEST_PHONE = "5130216147"
