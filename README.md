@@ -6,7 +6,7 @@ Aplicación web para cotización de seguros de salud desarrollada como parte de 
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178c6?logo=typescript)
 ![Vite](https://img.shields.io/badge/Vite-7.1-646cff?logo=vite)
 
-**Ver proyecto: `https://rimac-frontend-challenge-jaircael.netlify.app/`**
+**Ver proyecto: `https://rimac-challenge-jacael.netlify.app/`**
 
 ## Inicio
 
