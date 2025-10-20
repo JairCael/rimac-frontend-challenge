@@ -1,0 +1,115 @@
+@use "./breakpoints" as *;
+@forward "./variables";
+@forward "./breakpoints";
+@forward "./fonts";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #fafbff;
+  position: relative;
+}
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 0;
+  column-gap: 20px;
+  max-width: 1120px;
+  margin: auto;
+  padding: 32px 24px;
+
+  @include tablet {
+    grid-template-columns: repeat(8, 1fr);
+    column-gap: 24px;
+    padding: 0 24px;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 35px;
+    max-width: 928px;
+  }
+
+  & > * {
+    grid-column: 1 / -1;
+  }
+}
+
+.blur-purple,
+.blur-cyan {
+  position: absolute;
+  width: 350px;
+  pointer-events: none;
+
+  @include desktop {
+    width: 432px;
+  }
+}
+
+.blur-purple {
+  left: -110px;
+  bottom: 0;
+  @include tablet {
+    left: -50px;
+  }
+  @include desktop {
+    left: 0;
+  }
+}
+
+.blur-cyan {
+  right: 0;
+  top: -500px;
+  @include tablet {
+    top: -250px;
+  }
+  @include desktop {
+    top: -60px;
+  }
+}
+
+.spinner-loading {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 0px 8px;
+  border: 2.5px solid rgba(71, 75, 255, 0.2);
+  border-top-color: #474bff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+
+  &--plans {
+    width: 40px;
+    height: 40px;
+    margin: 40px auto 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

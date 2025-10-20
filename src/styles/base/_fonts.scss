@@ -1,0 +1,29 @@
+@use "./variables" as *;
+
+@mixin font-face($family, $folder, $weight, $weightName) {
+  @font-face {
+    font-family: $family;
+    font-style: normal;
+    font-weight: $weight;
+    font-display: swap;
+    src: url("/fonts/#{$folder}/#{$folder}-#{$weightName}.woff2")
+      format("woff2");
+  }
+}
+
+$font-weights: (
+  ($light, "Light"),
+  ($regular, "Regular"),
+  ($medium, "Medium"),
+  ($semibold, "Semibold"),
+  ($bold, "Bold"),
+  ($black, "Black")
+);
+
+@each $weight, $name in $font-weights {
+  @include font-face($BRSonoma, "BRSonoma", $weight, $name);
+}
+
+@each $weight, $name in $font-weights {
+  @include font-face($Lato, "Lato", $weight, $name);
+}

@@ -1,0 +1,14 @@
+export { default as ArrowBackMobile } from "./arrow-back-mobile.svg";
+export { default as ArrowBack } from "./arrow-back.svg";
+export { default as ArrowCollapse } from "./arrow-collapse.svg";
+export { default as Check } from "./check.svg";
+export { default as Clinic } from "./clinic.svg";
+export { default as DottedLine } from "./dotted-line.svg";
+export { default as ForMeIcon } from "./for-me-icon.svg";
+export { default as ForOthersIcon } from "./for-others-icon.svg";
+export { default as Home } from "./home.svg";
+export { default as Phone } from "./phone.svg";
+export { default as RimacIconWhiteMobile } from "./rimac-icon-white-mobile.svg";
+export { default as RimacIconWhite } from "./rimac-icon-white.svg";
+export { default as RimacIcon } from "./rimac-icon.svg";
+export { default as User } from "./user.svg";

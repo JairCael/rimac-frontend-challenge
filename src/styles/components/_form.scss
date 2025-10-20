@@ -1,0 +1,308 @@
+@use "../base/breakpoints" as *;
+@use "../base/variables" as *;
+
+%input-floating-base {
+  width: 100%;
+  height: 56px;
+  padding: 20px 16px 8px 16px;
+  border: 1px solid #5e6488;
+  outline: none;
+  font: $regular 16px/24px $BRSonoma;
+
+  &::placeholder {
+    opacity: 0;
+  }
+}
+
+%label-floating-base {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  font: $regular 16px/24px $BRSonoma;
+  color: #5e6488;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+%label-floating-active {
+  top: 16px;
+  font: $regular 12px/16px $BRSonoma;
+  color: #5e6488;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__inputs-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__document-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 56px;
+
+    @include tablet {
+      max-width: 352px;
+    }
+  }
+
+  &__document-wrapper {
+    display: flex;
+    width: 100%;
+  }
+
+  &__select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    & > img {
+      position: absolute;
+      right: 16px;
+      pointer-events: none;
+    }
+  }
+
+  &__select {
+    width: 140px;
+    height: 56px;
+    padding-left: 16px;
+    border: 1px solid #5e6488;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    outline: none;
+    font: $regular 16px/24px $BRSonoma;
+    cursor: pointer;
+    appearance: none;
+
+    &:focus {
+      border-color: #4f4fff;
+    }
+  }
+
+  &__input-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 140px);
+    gap: 4px;
+  }
+
+  &__input {
+    @extend %input-floating-base;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+
+    &--error {
+      border-color: $error-color;
+
+      &:focus {
+        border-color: $error-color;
+      }
+    }
+  }
+
+  &__label {
+    @extend %label-floating-base;
+  }
+
+  &__input:focus + &__label,
+  &__input:not(:placeholder-shown) + &__label {
+    @extend %label-floating-active;
+  }
+
+  &__phone-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 56px;
+    gap: 4px;
+  }
+
+  &__phone-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  &__phone-input {
+    @extend %input-floating-base;
+    border-radius: 8px;
+
+    &--error {
+      border-color: $error-color;
+
+      &:focus {
+        border-color: $error-color;
+      }
+    }
+  }
+
+  &__phone-label {
+    @extend %label-floating-base;
+  }
+
+  &__phone-input:focus + &__phone-label,
+  &__phone-input:not(:placeholder-shown) + &__phone-label {
+    @extend %label-floating-active;
+  }
+
+  &__checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font: $regular 12px/20px $BRSonoma;
+    letter-spacing: 0.1px;
+    color: #0a051e;
+  }
+
+  &__checkbox-label {
+    display: flex;
+    align-items: center;
+    font: $regular 12px/20px $BRSonoma;
+    color: #0a051e;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    & > input {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      border: 1px solid #5e6488;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+
+      &:checked {
+        accent-color: #0a051e;
+      }
+    }
+
+    &--error {
+      color: $error-color;
+
+      & > input {
+        border-color: $error-color;
+      }
+    }
+  }
+
+  &__terms {
+    display: inline-block;
+    margin-top: 8px;
+    font: $semibold 12px/20px $BRSonoma;
+    letter-spacing: 0.1px;
+    text-decoration: underline;
+    color: $text-primary;
+    cursor: pointer;
+  }
+
+  &__error {
+    display: block;
+    margin-top: 5px;
+    font: $semibold 12px/16px $BRSonoma;
+    color: $error-color;
+    animation: slideDown 0.3s ease;
+  }
+
+  &__button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 56px;
+    padding: 18px;
+    border: 2px solid transparent;
+    border-radius: 40px;
+    background: $text-primary;
+    font: $bold 18px/20px $BRSonoma;
+    letter-spacing: 0.3px;
+    color: $white-color;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(250, 250, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.5s, height 0.5s;
+    }
+
+    @include tablet {
+      height: 64px;
+      width: 196px;
+      padding: 20px 40px;
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: #000;
+      background: $white-color;
+      box-shadow: 0px 12px 28px rgba(3, 5, 15, 0.25);
+      color: #000;
+      transform: translateY(-3px);
+
+      &::after {
+        width: 300px;
+        height: 300px;
+      }
+    }
+
+    &:active:not(:disabled) {
+      box-shadow: 0px 6px 16px rgba(3, 5, 15, 0.2);
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    &--loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid $text-primary;
+      background: $white-color;
+      color: $text-primary;
+
+      &:hover {
+        background: $white-color;
+        color: $text-primary;
+        box-shadow: none;
+        transform: none;
+      }
+
+      @include tablet {
+        width: fit-content;
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
